@@ -3,7 +3,7 @@ import sbt.Keys.{description, name}
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
-ThisBuild / scalaVersion := "2.13.3"
+ThisBuild / scalaVersion := "2.13.4"
 
 lazy val root = (project in file("."))
   .aggregate(dynamoDb, lambda, stateMachine)
@@ -26,7 +26,14 @@ lazy val lambda = (project in file("lambda"))
     libraryDependencies ++= Seq(
       zio,
       zioStreams,
+      izumiReflect,
+      scalaCompat,
+      geny,
+      ujson,
+      upickleCore,
       upickle,
+      upickleImplicits,
+      awsCore,
       awsDynamoDb,
       awsLambda,
       awsS3,
